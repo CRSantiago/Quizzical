@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+
+import Question from './Question'
+import { createQuizData as QuizData } from './api/GetData'
 
 function App() {
+
+  const [quizData, setQuizData] = React.useState([])
+
+  const [showQuiz, setShowQuiz] = React.useState(false)
+
+  React.useEffect(() => {
+    QuizData()
+    .then(data => setQuizData(data))
+  }, [])
+
+  function startQuiz(){
+    setShowQuiz(true)
+  }
+
+  console.log(quizData)
+
+  const questionElements = quizData.map(question => {
+    return <Question key={question.id} question={question}/>
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        {!showQuiz && <div>
+        <h1 className="App--title">Quizzical</h1>
+        <button className="App--button" onClick={startQuiz}>Start Quiz</button>
+        </div>
+        }
+        {showQuiz && questionElements}
+      </div>
   );
 }
 
