@@ -18,7 +18,7 @@ const getData = async () => {
   
   const formatChoices = choices => {
       return choices.map((choice, index) => {
-          return { text: decodeHTML(choice.trim()) }
+          return { id: index, text: decodeHTML(choice.trim()) , isHeld:false}
       })
   }
   const combineAllChoices = question => question.correct_answer.split(',').concat(question.incorrect_answers)
