@@ -8,3 +8,7 @@
 
 ### Graded Answers
 ![CRSantiago_Quizzical - Google Chrome 6_10_2022 9_23_12 AM](https://user-images.githubusercontent.com/42612374/173075923-dd9f3542-5fd6-4aa5-84f0-71635ef864c4.png)
+
+
+
+[Try it here](https://letsquizzical.netlify.app/)
